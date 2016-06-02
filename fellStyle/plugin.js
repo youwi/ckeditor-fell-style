@@ -103,11 +103,16 @@
                    // editor.focus();
                     //editor.fire( 'saveSnapshot' );
                     //editor.getSelectedHtml().getHtml()
+                    //editor.getSelection().getSelectedText()
+                    var out;
+                    if(editor.getSelectedHtml)
+                        out=editor.getSelectedHtml().getHtml();
+                    else
+                        out=editor.getSelection().getSelectedText()
                     if(value.startsWith("g")){
-                        editor.insertHtml("<div style='"+_all[value]+"'>"+editor.getSelectedHtml().getHtml()+"</div>","unfiltered_html");
-
+                        editor.insertHtml("<div style='"+_all[value]+"'>"+out+"</div>","unfiltered_html");
                     }else
-                        editor.insertHtml("<span style='"+_all[value]+"'>"+editor.getSelectedHtml().getHtml() +"</span>","unfiltered_html");
+                        editor.insertHtml("<span style='"+_all[value]+"'>"+out +"</span>","unfiltered_html");
                    // editor.fire( 'saveSnapshot' );
                 }
             });
